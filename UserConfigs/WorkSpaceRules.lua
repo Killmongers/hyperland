@@ -1,0 +1,30 @@
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+--
+-- NOTE: THIS IS NOT REQUIRED BY hyprland
+-- It is only here as a guide if you want to do it manually.
+-- The file you should edit is ~/.config/hypr/workspaces.lua, since that is the
+-- workspace rules module required by hyprland.lua.
+-- Use nwg-displays to handle your workspace rules.
+--
+-- You can set workspace rules to achieve workspace-specific behaviors, for
+-- instance a workspace where all windows are drawn without borders or gaps.
+-- See https://wiki.hypr.land/configuring/core/rules/workspace-rules/
+
+-- Assigning a workspace to a certain monitor
+-- hl.workspace_rule({ workspace = "1", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "2", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "3", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "4", monitor = "eDP-1" })
+-- hl.workspace_rule({ workspace = "5", monitor = "DP-2" })
+-- hl.workspace_rule({ workspace = "6", monitor = "DP-2" })
+-- hl.workspace_rule({ workspace = "7", monitor = "DP-2" })
+-- hl.workspace_rule({ workspace = "8", monitor = "DP-2" })
+
+-- Example rules (from the wiki)
+-- hl.workspace_rule({ workspace = "3", no_rounding = true, decorate = false })
+-- hl.workspace_rule({ workspace = "name:coding", no_rounding = true, decorate = false, gaps_in = 0, gaps_out = 0, no_border = true, monitor = "DP-1" })
+-- hl.workspace_rule({ workspace = "8", border_size = 8 })
+-- hl.workspace_rule({ workspace = "name:Hello", monitor = "DP-1", default = true })
+-- hl.workspace_rule({ workspace = "name:gaming", monitor = "desc:Chimei Innolux Corporation 0x150C", default = true })
+-- hl.workspace_rule({ workspace = "5", on_created_empty = "[float] firefox" })
+-- hl.workspace_rule({ workspace = "special:scratchpad", on_created_empty = "foot" })

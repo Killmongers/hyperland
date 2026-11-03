@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
-# This file used on waybar modules sourcing defaults set in $HOME/.config/hypr/UserConfigs/01-UserDefaults.conf
+# This file used on waybar modules sourcing defaults set in $HOME/.config/hypr/UserConfigs/01-UserDefaults.lua
 
 # Define the path to the config file
-config_file=$HOME/.config/hypr/UserConfigs/01-UserDefaults.conf
+config_file=$HOME/.config/hypr/UserConfigs/01-UserDefaults.lua
 
 # Check if the config file exists
 if [[ ! -f "$config_file" ]]; then
@@ -11,11 +11,13 @@ if [[ ! -f "$config_file" ]]; then
     exit 1
 fi
 
-# Process the config file in memory, removing the $ and fixing spaces
-config_content=$(sed 's/\$//g' "$config_file" | sed 's/ = /=/')
+# Pull `name = "value"` entries out of the Lua defaults table
+lua_value() {
+    sed -n "s/^[[:space:]]*$1[[:space:]]*=[[:space:]]*[\"']\([^\"']*\)[\"'].*/\1/p" "$config_file" | head -n1
+}
 
-# Source the modified content directly from the variable
-eval "$config_content"
+term="$(lua_value term)"
+files="$(lua_value files)"
 
 # Check if $term is set correctly
 if [[ -z "$term" ]]; then
@@ -26,7 +28,7 @@ fi
 # Execute accordingly based on the passed argument
 launch_files() {
     if [[ -z "$files" ]]; then
-        notify-send -u low -i "$HOME/.config/swaync/images/error.png" "Waybar: files" "Set \$files in 01-UserDefaults.conf or install a default file manager."
+        notify-send -u low -i "$HOME/.config/swaync/images/error.png" "Waybar: files" "Set files in 01-UserDefaults.lua or install a default file manager."
         return 1
     fi
     eval "$files &"

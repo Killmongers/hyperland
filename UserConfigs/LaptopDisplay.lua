@@ -1,0 +1,13 @@
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+-- Laptop display overrides (user).
+-- Lua port of UserConfigs/LaptopDisplay.conf
+--
+-- This file exists so the laptop panel can be disabled while a lid is closed
+-- or while docked, without touching monitors.lua. It is required after
+-- monitors.lua, so anything set here wins.
+--
+-- Disable the internal panel (useful when docked):
+-- hl.monitor({ output = "eDP-1", disabled = true })
+--
+-- Or force it back on with an explicit mode:
+-- hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = 1 })

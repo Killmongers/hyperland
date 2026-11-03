@@ -1,0 +1,34 @@
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+-- Laptop overrides (user).
+-- Lua port of UserConfigs/Laptops.conf
+--
+-- The touchpad device name and the laptop specific keybinds live in
+-- configs/Laptops.lua. Anything you want to override can go here; it is
+-- required after the defaults.
+-- See https://wiki.hypr.land/configuring/core/devices/
+
+-- Shared variables. In Lua these are plain locals, so every module defines
+-- only the ones it actually uses.
+-- mainMod    = "SUPER"
+-- scriptsDir = os.getenv("HOME") .. "/.config/hypr/scripts"
+
+--------------------------------------------------------------------------------
+-- Disable the laptop display when the lid is closed.
+--
+-- WARNING! Using this method has some caveats. You need to set up your
+-- wallpaper (SUPER + W) again after docking, and sometimes the main laptop
+-- monitor does not re-connect your external monitor. A work around is to make
+-- sure the lid is OPEN before shutting down.
+--
+-- Under Hyprland 0.57, switches are bound as normal binds:
+--
+-- hl.bind("switch:off:Lid Switch", hl.dsp.exec_cmd('hyprctl dispatch \'hl.config({monitor={output="eDP-1", mode="preferred", position="auto", scale=1}})\''), { locked = true })
+-- hl.bind("switch:on:Lid Switch",  hl.dsp.exec_cmd('hyprctl dispatch \'hl.config({monitor={output="eDP-1", disabled=true}})\''), { locked = true })
+--
+-- The `hyprctl keyword monitor ...` form used by the old .conf files no longer
+-- exists, `hyprctl keyword` was removed in favour of Lua based config calls.
+--------------------------------------------------------------------------------
+
+-- If instead of the above you prefer to keep the internal panel always
+-- disabled while docked, put that monitor rule in UserConfigs/LaptopDisplay.lua
+-- (that file is required last, so it wins over monitors.lua).

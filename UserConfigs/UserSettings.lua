@@ -1,0 +1,21 @@
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+-- User settings.
+-- Lua port of UserConfigs/UserSettings.conf
+--
+-- This is where you put your own settings. It is not touched during dotfiles
+-- updates and is required after configs/SystemSettings.lua, so anything set
+-- here wins.
+-- See https://wiki.hypr.land/configuring/core/config-options/
+-- Look at configs/SystemSettings.lua to see the available sections.
+
+-- hl.config({
+--     input = {
+--         kb_layout = "us,fr",
+--         kb_options = "grp:alt_shift_toggle",
+--     },
+--
+--     general = {
+--         gaps_in  = 4,
+--         gaps_out = 8,
+--     },
+-- })
